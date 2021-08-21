@@ -43,7 +43,7 @@ app.get('/artist-search', (req, res) => {
     );
 });
 
-app.get('/albums/:artistId', (req, res, next) => {
+app.get('/albums/:artistId', (req, res) => {
   const { artistId } = req.params;
 
   spotifyApi
