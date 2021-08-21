@@ -29,7 +29,47 @@ app.get('/', (req, res) => {
   res.render('home');
 });
 
-app.get('/artist-search', (req, res) => {});
+app.get('/artist-search', (req, res) => {
+  const { artist } = req.query;
+
+  spotifyApi
+    .searchArtists(artist)
+    .then((data) => {
+      const artists = data.body.artists.items;
+      res.render('artist-search-results', { artists });
+    })
+    .catch((err) =>
+      console.log('The error while searching artists occurred: ', err)
+    );
+});
+
+app.get('/albums/:artistId', (req, res, next) => {
+  const { artistId } = req.params;
+
+  spotifyApi
+    .getArtistAlbums(artistId)
+    .then((data) => {
+      const albums = data.body.items;
+      res.render('albums', { albums });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get('/tracks/:albumId', (req, res) => {
+  const { albumId } = req.params;
+
+  spotifyApi
+    .getAlbumTracks(albumId)
+    .then((data) => {
+      const tracks = data.body.items;
+      res.render('tracks', { tracks });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 app.listen(3000, () =>
   console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊')
