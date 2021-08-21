@@ -1,7 +1,9 @@
-{{#each tracks}}
-  <div class='track'>
-    <h2>{{#each artists}}{{name}}{{#unless @last}}, {{/unless}} {{/each}}<br />
-      {{name}}</h2>
-    <audio controls src='{{preview_url}}'></audio>
-  </div>
-{{/each}}
+<div id='tracks'>
+  {{#each tracks}}
+    <div class='track'>
+      <h2>{{#each artists}}{{name}}{{#unless @last}}, {{/unless}} {{/each}}</h2>
+      <h3>{{name}}</h3>
+      <audio controls src='{{preview_url}}'></audio>
+    </div>
+  {{/each}}
+</div>

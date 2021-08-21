@@ -90,3 +90,18 @@ button {
 .album h2 {
   color: white;
 }
+
+#tracks {
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+}
+
+.track {
+  background-color: rgb(211, 211, 211);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5em;
+  padding: 1em;
+}
